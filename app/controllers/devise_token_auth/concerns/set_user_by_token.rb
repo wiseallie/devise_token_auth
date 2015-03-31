@@ -16,7 +16,7 @@ module DeviseTokenAuth::Concerns::SetUserByToken
   def set_user_by_token(mapping=nil)
 
     # determine target authentication class
-    rc = resource_class(mapping)
+    rc = find_resource_class(mapping)
 
     # no default user defined
     return unless rc
@@ -85,7 +85,7 @@ module DeviseTokenAuth::Concerns::SetUserByToken
 
   end
 
-  def resource_class(m=nil)
+  def find_resource_class(m=nil)
     if m
       mapping = Devise.mappings[m]
     else
